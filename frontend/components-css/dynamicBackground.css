@@ -1,4 +1,4 @@
-/* Base element handles the animation of background-position only */
+/* Base element handles the animation of background-position and transitions */
 .dynamic-bg {
   position: fixed;
   inset: 0;
@@ -9,12 +9,13 @@
   animation: gradientFlow 20s linear infinite;
   filter: brightness(0.95);
   pointer-events: none;
-  transition: opacity 1s ease-in-out, background 1.5s ease-in-out;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
+  will-change: opacity, background-image;
 }
 
 
-/* Dreamy glow overlay (optional) */
+/* Dreamy glow overlay with enhanced transitions */
 .dynamic-bg::after {
   content: "";
   position: absolute;
@@ -24,6 +25,24 @@
   opacity: 0.35;
   filter: blur(48px);
   pointer-events: none;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, filter;
+}
+
+/* Fade in animation for new backgrounds */
+.fade-in {
+  animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Keyframes animate the background-position — this works reliably */
