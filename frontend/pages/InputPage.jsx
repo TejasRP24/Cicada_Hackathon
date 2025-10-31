@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import DynamicBackground from "../components/DynamicBackground";
 import "../components-css/inputPage.css";
 import { useTheme } from "../components/ThemeContext";
@@ -19,25 +20,38 @@ export default function InputPage() {
     setLoading(true);
     setOutput("");
 
-    const formData = new FormData();
-    if (text) formData.append("text", text);
-    if (audioFile) formData.append("file", audioFile);
-
     try {
-      const response = await fetch("http://127.0.0.1:8000/analyze", {
-        method: "POST",
-        body: formData,
-      });
+      // If user uploaded an audio file, call the voice analysis endpoint
+      if (audioFile) {
+        const fd = new FormData();
+        fd.append("file", audioFile);
 
-      if (!response.ok) throw new Error(`Server error: ${response.status}`);
+        const resp = await axios.post(
+          "http://127.0.0.1:8000/analyze/analyze-voice",
+          fd,
+          { headers: { "Content-Type": "multipart/form-data" } }
+        );
 
-      const result = await response.json();
+        const result = resp.data;
+        setEmotion(result.emotion || "neutral");
+        setOutput(result.message || "Voice analysis complete.");
+      } else {
+        // Otherwise call the text analysis endpoint
+        const resp = await axios.post(
+          "http://127.0.0.1:8000/analyze/analyze-text",
+          { text },
+          { headers: { "Content-Type": "application/json" } }
+        );
 
-      setEmotion(result.emotion || "neutral");
-      setOutput(result.message || "Analysis complete.");
+        const result = resp.data;
+        setEmotion(result.emotion || "neutral");
+        setOutput(result.message || "Text analysis complete.");
+      }
     } catch (error) {
-      console.error(error);
-      setOutput("Something went wrong while analyzing 😔");
+      console.error(error?.response || error);
+      // Show server-sent message if available
+      const serverMsg = error?.response?.data?.message;
+      setOutput(serverMsg || "Something went wrong while analyzing 😔");
     } finally {
       setLoading(false);
     }

@@ -47,18 +47,18 @@
   background: linear-gradient(-45deg, #0f172a, #1e293b, #0a0a0a, #111827);
 }
 
-.bg-calm {
+.bg-fear {
   background: linear-gradient(-45deg, #a1c4fd, #c2e9fb, #89f7fe, #66a6ff);
 }
 
-.bg-happy {
+.bg-joy {
   background: linear-gradient(-45deg, #ffecd2, #fcb69f, #ff9a9e, #fad0c4);
 }
 
-.bg-sad {
+.bg-sadness {
   background: linear-gradient(-45deg, #373b44, #4286f4, #283e51, #485563);
 }
 
-.bg-angry {
+.bg-anger{
   background: linear-gradient(-45deg, #ff0844, #ffb199, #ff512f, #dd2476);
 }
