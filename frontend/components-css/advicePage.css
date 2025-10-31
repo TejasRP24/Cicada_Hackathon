@@ -1,0 +1,46 @@
+.advice-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.advice-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 3rem 2.2rem;
+  text-align: center;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.advice-title {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin-bottom: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.advice-text {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+.advice-text.error {
+  color: #fca5a5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

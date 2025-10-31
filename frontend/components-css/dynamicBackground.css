@@ -1,0 +1,64 @@
+/* Base element handles the animation of background-position only */
+.dynamic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 400% 400%;
+  animation: gradientFlow 20s linear infinite;
+  filter: brightness(0.95);
+  pointer-events: none;
+  transition: opacity 1s ease-in-out, background 1.5s ease-in-out;
+  opacity: 1;
+}
+
+
+/* Dreamy glow overlay (optional) */
+.dynamic-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+/* Keyframes animate the background-position — this works reliably */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* THEME BACKGROUNDS (these provide the color gradients;
+   they are independent from the animation so switching classes is instantaneous) */
+
+.bg-neutral {
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #0a0a0a, #111827);
+}
+
+.bg-calm {
+  background: linear-gradient(-45deg, #a1c4fd, #c2e9fb, #89f7fe, #66a6ff);
+}
+
+.bg-happy {
+  background: linear-gradient(-45deg, #ffecd2, #fcb69f, #ff9a9e, #fad0c4);
+}
+
+.bg-sad {
+  background: linear-gradient(-45deg, #373b44, #4286f4, #283e51, #485563);
+}
+
+.bg-angry {
+  background: linear-gradient(-45deg, #ff0844, #ffb199, #ff512f, #dd2476);
+}

@@ -1,0 +1,27 @@
+{
+  "happy": {
+    "1": "/happy1.mp3",
+    "2": "/happy2.mp3",
+    "3": "/happy3.mp3"
+  },
+  "sad": {
+    "1": "/sad1.mp3",
+    "2": "/sad2.mp3",
+    "3": "/sad3.mp3"
+  },
+  "joy": {
+    "1": "/joy1.mp3",
+    "2": "/joy2.mp3",
+    "3": "/joy1.mp3"
+  },
+  "anger": {
+    "1": "/angry1.mp3",
+    "2": "/angry2.mp3",
+    "3": "/angry3.mp3"
+  },
+  "neutral": {
+    "1": "/neutral1.mp3",
+    "2": "/neutral2.mp3",
+    "3": "/neutral3.mp3"
+  }
+}

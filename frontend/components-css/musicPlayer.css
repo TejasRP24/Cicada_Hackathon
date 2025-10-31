@@ -1,0 +1,28 @@
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.music-controls {
+  display: flex;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.music-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  color: #66a6ff;
+}
