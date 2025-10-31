@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+pymongo
+librosa
+pydub
+numpy
+langchain
+langchain-google-genai
+google-generativeai
+python-dotenv
+SpeechRecognition
+pyaudio
+torch
+torchvision
+torchaudio
+transformers
+sqlalchemy
