@@ -13,7 +13,7 @@ export default function DynamicBackground() {
       const timeout = setTimeout(() => {
         setPrevEmotion(emotion);
         setFade(false);
-      }, 800); // match fade duration in CSS
+      }, 1200); // match new fade duration in CSS
       return () => clearTimeout(timeout);
     }
   }, [emotion, prevEmotion]);

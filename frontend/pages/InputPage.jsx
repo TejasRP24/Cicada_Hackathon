@@ -33,8 +33,10 @@ export default function InputPage() {
         );
 
         const result = resp.data;
-        setEmotion(result.emotion || "neutral");
-        setOutput(result.message || "Voice analysis complete.");
+        // Get mood_label from analysis object and map to frontend emotion
+        const emotion = result.analysis?.mood_label || "neutral";
+        setEmotion(emotion.toLowerCase());
+        setOutput(`Detected emotion: ${emotion}`);
       } else {
         // Otherwise call the text analysis endpoint
         const resp = await axios.post(
@@ -44,14 +46,18 @@ export default function InputPage() {
         );
 
         const result = resp.data;
-        setEmotion(result.emotion || "neutral");
-        setOutput(result.message || "Text analysis complete.");
+        // Get mood_label from analysis object and map to frontend emotion
+        const emotion = result.analysis?.mood_label || "neutral";
+        setEmotion(emotion.toLowerCase());
+        const score = result.analysis?.mood_score || 0;
+        setOutput(`Detected emotion: ${emotion} (confidence: ${Math.round(score * 100)}%)`);
       }
     } catch (error) {
       console.error(error?.response || error);
       // Show server-sent message if available
       const serverMsg = error?.response?.data?.message;
       setOutput(serverMsg || "Something went wrong while analyzing 😔");
+      setEmotion("neutral"); // Reset to neutral on error
     } finally {
       setLoading(false);
     }

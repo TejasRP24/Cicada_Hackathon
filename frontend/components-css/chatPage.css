@@ -1,5 +1,5 @@
 .chat-page {
-  height: calc(100vh - 50px);
+  height: calc(100vh - 110px); /* Reduced height to accommodate button */
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -11,8 +11,9 @@
   padding: 1rem;
   box-shadow: -2px 0 12px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.4s ease-in-out;
-  overflow-y: auto;
+  position: relative;
   margin: 0 1rem;
+  margin-bottom: 60px; /* Add space for the button */
 }
 
 @keyframes fadeIn {
@@ -37,11 +38,14 @@
   flex-direction: column;
   gap: 0.75rem;
   padding: 1rem;
+  padding-bottom: 1.5rem;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.35);
   box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
   scroll-behavior: smooth;
   margin: 0.5rem;
+  margin-bottom: 0;
+  max-height: calc(100vh - 180px);
 }
 
 .chat-window::-webkit-scrollbar {
@@ -94,6 +98,10 @@
   border-radius: 12px;
   padding: 0.6rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-bottom: 0.5rem;
 }
 
 .chat-input-area input {
